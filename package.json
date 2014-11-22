@@ -1,0 +1,12 @@
+{
+  "name": "predictions",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "^3.3.1",
+    "ejs": "^1.0.0",
+    "express": "^4.10.2",
+    "html": "0.0.7",
+    "jade": "^1.7.0",
+    "mongoose": "^3.8.19"
+  }
+}
