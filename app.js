@@ -15,11 +15,12 @@ app.set('view engine', 'ejs')
 app.use('/', router);
 app.use(express.static(__dirname + '/public'))
   
+mongoose.connect('mongodb://heroku:b49f33a3163db990c40c1731026143e9@dogen.mongohq.com:10009/app31863398
 //mongoose.connect('mongodb://localhost/goose');
 //KI6fpLPfNUEDwo4
 //mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
-//var db = mongoose.connection;
-//db.once('open', function callback() {
+var db = mongoose.connection;
+db.once('open', function callback() {
   
   router.get('/', function(req, res) {
     res.render('index');
@@ -49,5 +50,5 @@ app.use(express.static(__dirname + '/public'))
 
   app.listen(3000);
   console.log('Server running at http://localhost:3000...');
-//})
+})
 
