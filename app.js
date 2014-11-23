@@ -9,15 +9,17 @@ var async = require('async'),
     router = express.Router();
   
 // app setup
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.use('/', router);
 app.use(express.static(__dirname + '/public'))
   
 //mongoose.connect('mongodb://localhost/goose');
-//var db = mongoose.connection;
-//db.once('open', function callback() {
+//htH@EHpzffPtB62
+mongoose.connect('mongodb://gooser_user:htH@EHpzffPtB62@ds051750.mongolab.com:51750/goose');
+var db = mongoose.connection;
+db.once('open', function callback() {
   
   router.get('/', function(req, res) {
     res.render('index');
@@ -47,5 +49,5 @@ app.use(express.static(__dirname + '/public'))
 
   app.listen(3000);
   console.log('Server running at http://localhost:3000...');
-//})
+})
 
