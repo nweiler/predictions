@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 app.use('/', router);
 app.use(express.static(__dirname + '/public'))
   
-mongoose.connect('mongodb://heroku:b49f33a3163db990c40c1731026143e9@dogen.mongohq.com:10009/app31863398');
+mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app31863398');
 //mongoose.connect('mongodb://localhost/goose');
 //mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
 var db = mongoose.connection;
