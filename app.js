@@ -15,9 +15,9 @@ app.set('view engine', 'ejs')
 app.use('/', router);
 app.use(express.static(__dirname + '/public'))
   
-mongoose.connect('mongodb://localhost/goose');
-var db = mongoose.connection;
-db.once('open', function callback() {
+//mongoose.connect('mongodb://localhost/goose');
+//var db = mongoose.connection;
+//db.once('open', function callback() {
   
   router.get('/', function(req, res) {
     res.render('index');
@@ -47,5 +47,5 @@ db.once('open', function callback() {
 
   app.listen(3000);
   console.log('Server running at http://localhost:3000...');
-})
+//})
 
