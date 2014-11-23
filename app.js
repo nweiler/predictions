@@ -17,9 +17,9 @@ app.use(express.static(__dirname + '/public'))
   
 //mongoose.connect('mongodb://localhost/goose');
 //KI6fpLPfNUEDwo4
-mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
-var db = mongoose.connection;
-db.once('open', function callback() {
+//mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
+//var db = mongoose.connection;
+//db.once('open', function callback() {
   
   router.get('/', function(req, res) {
     res.render('index');
@@ -36,11 +36,11 @@ db.once('open', function callback() {
   });
 
   router.get('/api/guesses/:name', function(req, res) {
-    api.get_guess(req, res, db, function(e, d) {
+    //api.get_guess(req, res, db, function(e, d) {
       res.render('index',
         { 'result': d }
       )
-    })
+    //})
   });
   
   router.post('/api/guesses/:name', function(req, res) {
@@ -49,5 +49,5 @@ db.once('open', function callback() {
 
   app.listen(3000);
   console.log('Server running at http://localhost:3000...');
-})
+//})
 
