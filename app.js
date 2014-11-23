@@ -16,8 +16,8 @@ app.use('/', router);
 app.use(express.static(__dirname + '/public'))
   
 //mongoose.connect('mongodb://localhost/goose');
-//htH@EHpzffPtB62
-mongoose.connect('mongodb://gooser_user:htH@EHpzffPtB62@ds051750.mongolab.com:51750/goose');
+//KI6fpLPfNUEDwo4
+mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
 var db = mongoose.connection;
 db.once('open', function callback() {
   
