@@ -107,12 +107,14 @@
               </thead>
               <tbody>
                 <% guesses.forEach(function(g) { %>
+                <%  if (g.year == 2014) { %>
                   <tr>
                   <td><%= g.name %></td>
                   <td><%= g.city %></td>
                   <td><%= g.date %></td>
                   <td>N/A</td>
                 </tr>
+                <% } %>
                 <% }) %>
               </tbody>
             </table>
@@ -130,17 +132,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Nick</td>
-                  <td>South Bend</td>
-                  <td>12/1/2014</td>
-                  <th>N/A</th>
+                <% guesses.forEach(function(g) { %>
+                <%  if (g.year == 2013) { %>
+                  <tr>
+                  <td><%= g.name %></td>
+                  <td><%= g.city %></td>
+                  <td><%= g.date %></td>
+                  <td>N/A</td>
                 </tr>
-                <tr>
-                  <td>Rosie</td>
-                  <td>Chicago</td>
-                  <td>12/31/2014</td>
-                  <th>N/A</th>
+                <% } %>
+                <% }) %>
               </tbody>
             </table>
  
