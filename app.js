@@ -17,30 +17,24 @@ app.use(express.static(__dirname + '/public'))
   
 mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app31863398');
 //mongoose.connect('mongodb://localhost/goose');
-//mongoose.connect('mongodb://goose_user:KI6fpLPfNUEDwo4@ds051750.mongolab.com:51750/goose');
 var db = mongoose.connection;
 db.once('open', function callback() {
   
   router.get('/', function(req, res) {
-    res.render('index');
-  });
-
-  router.get('/api', function(req, res) {
-    res.render('index');
-  });
-
-  router.get('/api/users', function(req, res) {
-    res.render('index',
-    { 'title': 'Users' }
-    )
-  });
+    api.get_all_guesses(req, res, db, function(e, d) {
+      res.render('index', {
+        'title': 'Snow Predictions',
+        'guesses': d
+      })
+    })
+  })
 
   router.get('/api/guesses/:name', function(req, res) {
-    //api.get_guess(req, res, db, function(e, d) {
-      res.render('index',
-        { 'result': d }
-      )
-    //})
+    api.get_one_guess(req, res, db, function(e, d) {
+      res.render('index', {
+        'result': d
+      })
+    })
   });
   
   router.post('/api/guesses/:name', function(req, res) {

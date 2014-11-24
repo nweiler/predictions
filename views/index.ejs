@@ -38,7 +38,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Snow Predictions</a>
+          <a class="navbar-brand" href="#"><%= title %></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -106,17 +106,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Nick</td>
-                  <td>South Bend</td>
-                  <td>12/1/2014</td>
-                  <th>N/A</th>
+                <% guesses.forEach(function(g) { %>
+                  <tr>
+                  <td><%= g.name %></td>
+                  <td><%= g.city %></td>
+                  <td><%= g.date %></td>
+                  <td>N/A</td>
                 </tr>
-                <tr>
-                  <td>Rosie</td>
-                  <td>Chicago</td>
-                  <td>12/31/2014</td>
-                  <th>N/A</th>
+                <% }) %>
               </tbody>
             </table>
           </div>
