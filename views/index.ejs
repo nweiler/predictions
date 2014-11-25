@@ -62,10 +62,9 @@
             <li><a href="#">Detail</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">2014</a></li>
-            <li><a href="">2013</a></li>
-            <li><a href="">2012</a></li>
-            <li><a href="">2011</a></li>
+          <% years.forEach(function(year) { %>
+            <li><a href=""><%= year %></a></li>
+          <% }) %>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -123,6 +122,30 @@
             </table>
           </div>
           <% }) %>
+
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <div class="input-group">
+                <label class="sr-only" for="exampleInputEmail2">Name</label>
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2">Location</label>
+              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Location">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2">Guess</label>
+              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Guess">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2">Year</label>
+              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Year">
+            </div>
+            <div class="checkbox">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
 
         </div>
       </div>
