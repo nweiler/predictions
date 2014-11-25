@@ -21,10 +21,13 @@ var db = mongoose.connection;
 db.once('open', function callback() {
   
   router.get('/', function(req, res) {
-    api.get_all_guesses(req, res, db, function(e, d) {
-      res.render('index', {
-        'title': 'Snow Predictions',
-        'guesses': d
+    api.get_years(req, res, db, function(e, years) {
+      api.get_all_guesses(req, res, db, function(e, guesses) {
+        res.render('index', {
+          'title': 'Snow Predictions',
+          'years': years,
+          'guesses': guesses
+        })
       })
     })
   })

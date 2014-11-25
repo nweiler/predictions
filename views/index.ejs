@@ -94,7 +94,8 @@
             </div>
           </div>
 
-          <h2 class="sub-header">2014</h2>
+          <% years.forEach(function(year) { %>
+          <h2 class="sub-header"><%= year %></h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -106,12 +107,12 @@
                 </tr>
               </thead>
               <tbody>
-                <% guesses.forEach(function(g) { %>
-                <%  if (g.year == 2014) { %>
+                <% guesses.forEach(function(guess) { %>
+                <%  if (guess.year == year) { %>
                   <tr>
-                  <td><%= g.name %></td>
-                  <td><%= g.city %></td>
-                  <td><%= g.date %></td>
+                  <td><%= guess.name %></td>
+                  <td><%= guess.city %></td>
+                  <td><%= guess.date %></td>
                   <td>N/A</td>
                 </tr>
                 <% } %>
@@ -119,32 +120,7 @@
               </tbody>
             </table>
           </div>
-
-          <h2 class="sub-header">2013</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Person</th>
-                  <th>Location</th>
-                  <th>Guess</th>
-                  <th>Actual</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% guesses.forEach(function(g) { %>
-                <%  if (g.year == 2013) { %>
-                  <tr>
-                  <td><%= g.name %></td>
-                  <td><%= g.city %></td>
-                  <td><%= g.date %></td>
-                  <td>N/A</td>
-                </tr>
-                <% } %>
-                <% }) %>
-              </tbody>
-            </table>
- 
+          <% }) %>
 
         </div>
       </div>
