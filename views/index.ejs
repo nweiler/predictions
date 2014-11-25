@@ -112,7 +112,9 @@
                   <tr>
                   <td><%= guess.name %></td>
                   <td><%= guess.city %></td>
-                  <td><%= guess.date %></td>
+                  <td><%= guess.date.getMonth() + '/' + 
+                          guess.date.getDate() + '/' + 
+                          guess.date.getFullYear() %></td>
                   <td>N/A</td>
                 </tr>
                 <% } %>
