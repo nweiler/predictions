@@ -1,5 +1,6 @@
 var async = require('async'),
     api = require('./lib/api.js'),
+    bodyParser = require('body-parser'),
     express = require('express'),
     app = express(),
     ejs = require('ejs'),
@@ -12,8 +13,10 @@ var async = require('async'),
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
-app.use('/', router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'))
+app.use('/', router);
   
 mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app31863398');
 //mongoose.connect('mongodb://localhost/goose');
@@ -35,17 +38,13 @@ db.once('open', function callback() {
     })
   })
 
-  router.get('/api/guesses/:name', function(req, res) {
-    api.get_one_guess(req, res, db, function(e, d) {
-      res.render('index', {
-        'result': d
-      })
-    })
-  });
-  
+  router.post('/create', function(req, res) {
+    api.create(req, res, db)
+  })
+
   router.post('/api/guesses/:name', function(req, res) {
     api.update_guess(req, res, db);
-  });
+  })
 
   app.listen(app.get('port'), function() {
     console.log('Server running at http://localhost:' + app.get('port'));
