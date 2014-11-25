@@ -123,24 +123,48 @@
           </div>
           <% }) %>
 
+
+
+        <h2 class="sub-header">Enter Guess</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Guess</th>
+                  <th>Actual</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
           <form class="form-inline" role="form">
             <div class="form-group">
               <div class="input-group">
                 <label class="sr-only" for="exampleInputEmail2">Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Name">
+                <input type="text" class="form-control" id="name" placeholder="Name">
               </div>
             </div>
             <div class="form-group">
               <label class="sr-only" for="exampleInputPassword2">Location</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Location">
+              <select class="form-control">
+                <option>chicago</option>
+                <option>south bend</option>
+                <option>columbus</option>
+              </select>
             </div>
             <div class="form-group">
-              <label class="sr-only" for="exampleInputPassword2">Guess</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Guess">
+              <label class="sr-only" for="exampleInputPassword2">date</label>
+              <input type="text" class="form-control" id="date" placeholder="Guess">
             </div>
             <div class="form-group">
               <label class="sr-only" for="exampleInputPassword2">Year</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Year">
+              <select class="form-control">
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+              </select>
             </div>
             <div class="checkbox">
             </div>
