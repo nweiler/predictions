@@ -53,9 +53,6 @@ db.once('open', function callback() {
 
 // ==== UTILS ==== //
 function _cb(e, d) {
-  if (e) {
-    console.log('Error: %s', e);
-  } else {
-    console.log('Data: %s', d);
-  }
+  if (e) { console.log('Error: %s', e); }
+  else { console.log('Data: %s', JSON.stringify(d)); }
 }
