@@ -102,7 +102,7 @@
                   <tr>
                   <td><%= guess.name %></td>
                   <td><%= guess.city %></td>
-                  <td><%= guess.date.getMonth() + '/' + 
+                  <td><%= guess.date.getMonth() + 1 + '/' + 
                           guess.date.getDate() + '/' + 
                           guess.date.getFullYear() %></td>
                   <td>N/A</td>
@@ -116,19 +116,6 @@
 
 
         <h2 class="sub-header">Enter Guess</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Location</th>
-                  <th>Guess</th>
-                  <th>Actual</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-
           <form action='/create' method='post' class="form-inline" role="form">
             <div class="form-group">
               <div class="input-group">

@@ -39,11 +39,11 @@ db.once('open', function callback() {
   })
 
   router.post('/create', function(req, res) {
-    api.create(req, res, db)
+    api.upsert_guess(req, res, db, _cb)
   })
 
   router.post('/api/guesses/:name', function(req, res) {
-    api.update_guess(req, res, db);
+    api.update_guess(req, res, db, _cb)
   })
 
   app.listen(app.get('port'), function() {
@@ -51,3 +51,11 @@ db.once('open', function callback() {
   })
 })
 
+// ==== UTILS ==== //
+function _cb(e, d) {
+  if (e) {
+    console.log('Error: %s', e);
+  } else {
+    console.log('Data: %s', d);
+  }
+}
