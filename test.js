@@ -14,7 +14,7 @@ mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app318
 var db = mongoose.connection;
 db.once('open', function callback() {
   
-  api.get_all_guesses('nick', db, function(e, years) {
+  api.get_all_guesses(db, function(e, years) {
     console.log(years);
   })
 })

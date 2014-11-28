@@ -24,12 +24,9 @@ var db = mongoose.connection;
 db.once('open', function callback() {
   
   router.get('/', function(req, res) {
-    api.get_years(req, res, db, function(e, years) {
+    api.get_years(db, function(e, years) {
       res.render('index', {
-        'title': 'Snow Predictions',
-        'users': users,
-        'years': years,
-        'guesses': guesses
+        'title': 'Snow Predictions'
       })
     })
   })
