@@ -38,7 +38,7 @@ db.once('open', function callback() {
     })
   })
 
-  router.post('/create', function(req, res) {
+  router.post('/upsert_guess', function(req, res) {
     api.upsert_guess(req, res, db, _cb)
   })
 
