@@ -106,6 +106,18 @@
                           guess.date.getDate() + '/' + 
                           guess.date.getFullYear() %></td>
                   <td>N/A</td>
+                  <td>
+                    <form action='/delete_guess' method='post'>
+                      <button type="button"
+                        class="btn btn-xs btn-danger" 
+                        name="<%= guess.name %>"
+                        city="<%= guess.city%>"
+                        date="<%= guess.date.getMonth() + 1 + '/' + 
+                              guess.date.getDate() + '/' + 
+                              guess.date.getFullYear() %>"
+                        onClick="">Delete</button>
+                    </form>
+                  </td>
                 </tr>
                 <% } %>
                 <% }) %>
@@ -115,7 +127,7 @@
           <% }) %>
 
 
-        <h2 class="sub-header">Enter Guess</h2>
+        <h2 class="sub-header">Enter/Update Guess</h2>
           <form action='/upsert_guess' method='post' class="form-inline" role="form">
             <div class="form-group">
               <div class="input-group">
