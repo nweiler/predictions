@@ -25,8 +25,15 @@ db.once('open', function callback() {
   
   router.get('/', function(req, res) {
     api.get_years(db, function(e, years) {
-      res.render('index', {
-        'title': 'Snow Predictions'
+      api.get_users(db, function(e, users) {
+        api.get_all_guesses(db, function(e, guesses) {
+          res.render('index', {
+            'title': 'Snow Predictions',
+            'users': users,
+            'years': years,
+            'guesses': guesses
+          })
+        })
       })
     })
   })
