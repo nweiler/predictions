@@ -41,6 +41,10 @@ db.once('open', function callback() {
   router.post('/upsert_guess', function(req, res) {
     api.upsert_guess(req, res, db, _cb)
   })
+  
+  router.post('/delete_guess', function(req, res) {
+    api.delete_guess(req, res, db, _cb)
+  })
 
   router.post('/api/guesses/:name', function(req, res) {
     api.update_guess(req, res, db, _cb)
