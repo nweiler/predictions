@@ -19,13 +19,16 @@ db.once('open', function callback() {
     console.log(years);
   })
   
+*/
+/*
   api.get_years(db, function(e, years) {
     console.log(years);
   })
-  
 */
+///*
   api.get_all_guesses(db, function(e, guesses) {
     console.log(guesses);
   })
+//*/
 
 })
