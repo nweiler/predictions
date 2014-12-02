@@ -46,10 +46,6 @@ db.once('open', function callback() {
     api.delete_guess(req, res, db, _cb)
   })
 
-  router.post('/api/guesses/:name', function(req, res) {
-    api.update_guess(req, res, db, _cb)
-  })
-
   app.listen(app.get('port'), function() {
     console.log('Server running at http://localhost:' + app.get('port'));
   })
