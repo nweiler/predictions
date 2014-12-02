@@ -1,5 +1,6 @@
 var async = require('async'),
     api = require('./lib/api.js'),
+    basicAuth = require('basic-auth'),
     bodyParser = require('body-parser'),
     express = require('express'),
     app = express(),
@@ -19,7 +20,6 @@ app.use(express.static(__dirname + '/public'))
 app.use('/', router);
   
 mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app31863398');
-//mongoose.connect('mongodb://localhost/goose');
 var db = mongoose.connection;
 db.once('open', function callback() {
   
