@@ -110,10 +110,8 @@
                     <form action='/delete_guess' method='post' class="form-inline" role="form">
                       <input type="hidden" name="name" value="<%= guess.name %>">
                       <input type="hidden" name="city" value="<%= guess.city %>">
-                      <input type="hidden" name="date" value="<%= guess.date.getMonth() + 1 + '/' +
-                                                                  guess.date.getDate() + '/' +
-                                                                  guess.date.getFullYear() %>">
-                      <button type="submit" class="btn btn-xs btn-danger" >Delete</button>
+                      <input type="hidden" name="year" value="<%= guess.year %>">
+                      <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                     </form>
                   </td>
                 </tr>
