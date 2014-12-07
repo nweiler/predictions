@@ -67,27 +67,27 @@
           <% }) %>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Summary</h1>
 
-    <!--
+
           <div class="row placeholders">
           <% users.forEach(function(user, idx) { %>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <% if (idx % 2 == 0) { %>
-                <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <% } else { %>
-                <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <% } %>
-              <h4><%= user %></h4>
-              <span class="text-muted">Mean days off</span>
+            <%= user %>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                60%
+              </div>
             </div>
+
           <% }) %>
           </div>
-    -->
 
           <% years.forEach(function(year) { %>
           <h2 class="sub-header"><%= year %></h2>
+
+    
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -100,14 +100,19 @@
               </thead>
               <tbody>
                 <% guesses.forEach(function(guess) { %>
-                <%  if (guess.year == year) { %>
+                <% if (guess.year == year) { %>
                   <tr>
                   <td><%= guess.name %></td>
                   <td><%= guess.city %></td>
-                  <td><%= guess.date.getMonth() + 1 + '/' + 
-                          guess.date.getDate() + '/' + 
-                          guess.date.getFullYear() %></td>
-                  <td>N/A</td>
+                  <td><%= guess.date.getMonth() + 1 + '/' + guess.date.getDate() + '/' + guess.date.getFullYear() %></td>
+                  <% actuals.forEach(function(actual) { %>
+                    actual: <%= JSON.stringify(actual) %></br>
+                    <% if (guess.city === actual.city && guess.year=== actual.year) { %>
+                      <td><%= acutal.date.getMonth() + 1 + '/' + actual.date.getDate() + '/' + actual.date.getFullYear() %></td>
+                    <% } else { %>
+                      <td>N/A</td>
+                    <% } %>
+                  <% }) %>
                   <td>
                     <form action='/delete_guess' method='post' class="form-inline" role="form">
                       <input type="hidden" name="name" value="<%= guess.name %>">

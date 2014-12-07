@@ -30,5 +30,8 @@ db.once('open', function callback() {
     console.log(guesses);
   })
 //*/
+  api.get_actuals(db, function(e, actuals) {
+    console.log(actuals);
+  })
 
 })
