@@ -25,13 +25,15 @@ db.once('open', function callback() {
     console.log(years);
   })
 */
-///*
+/*
   api.get_all_guesses(db, function(e, guesses) {
     console.log(guesses);
   })
-//*/
+*/
   api.get_actuals(db, function(e, actuals) {
-    console.log(actuals);
+    actuals.forEach(function(x) {
+      console.log('actual: %s', JSON.stringify(x));
+    })
   })
 
 })

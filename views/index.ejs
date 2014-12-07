@@ -105,13 +105,13 @@
                   <td><%= guess.name %></td>
                   <td><%= guess.city %></td>
                   <td><%= guess.date.getMonth() + 1 + '/' + guess.date.getDate() + '/' + guess.date.getFullYear() %></td>
+                  <% var actual_or_none; %>
                   <% actuals.forEach(function(actual) { %>
-                    actual: <%= JSON.stringify(actual) %></br>
-                    <% if (guess.city === actual.city && guess.year=== actual.year) { %>
-                      <td><%= acutal.date.getMonth() + 1 + '/' + actual.date.getDate() + '/' + actual.date.getFullYear() %></td>
-                    <% } else { %>
-                      <td>N/A</td>
+                    <% if (actual.city === guess.city && actual.year === guess.year) { %>
+                      <% var actual_or_none = actual.date.getMonth() + 1 + '/' + actual.date.getDate() + '/' + actual.date.getFullYear() %>
                     <% } %>
+                    <% if (actual_or_none === undefined) actual_or_none = 'N/A' %>
+                  <td><%= actual_or_none %></td>
                   <% }) %>
                   <td>
                     <form action='/delete_guess' method='post' class="form-inline" role="form">
