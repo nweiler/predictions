@@ -58,12 +58,11 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Summary <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Detail</a></li>
+            <li class="active"><a href="#Summary">Summary <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
           <% years.forEach(function(year) { %>
-            <li><a href=""><%= year %></a></li>
+            <li><a href="#<%= year %>"><%= year %></a></li>
           <% }) %>
           </ul>
         </div>
@@ -85,8 +84,10 @@
           </div>
 
           <% years.forEach(function(year) { %>
-          <h2 class="sub-header"><%= year %></h2>
-
+          <h2 class="sub-header">
+            <a name="<%= year %>"></a>
+            <%= year %>
+          </h2>
     
           <div class="table-responsive">
             <table class="table table-striped">
@@ -96,7 +97,8 @@
                   <th>Location</th>
                   <th>Guess</th>
                   <th>Actual</th>
-                  <th>Difference</th>
+                  <th>Diff (Days)</th>
+                  <th> </th>
                 </tr>
               </thead>
               <tbody>
