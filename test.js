@@ -34,10 +34,14 @@ db.once('open', function callback() {
       console.log('actual: %s', JSON.stringify(x));
     })
   })
-*/
 
 api.get_locations(db, function(e, locs) {
   console.log(locs);
+})
+*/
+
+api.get_winners(db, function(e, winners) {
+  console.log(winners);
 })
 
 })
