@@ -84,58 +84,61 @@
           </div>
 
           <% years.forEach(function(year) { %>
-          <h2 class="sub-header">
-            <a name="<%= year %>"></a>
-            <%= year %>
-          </h2>
-    
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Person</th>
-                  <th>Location</th>
-                  <th>Guess</th>
-                  <th>Actual</th>
-                  <th>Diff (Days)</th>
-                  <th> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <% guesses.forEach(function(guess) { %>
-                <% if (guess.year == year) { %>
+            <h1 class="page-header"><%=year%></h1>
+            <% cities.forEach(function(city) { %>
+            <% var winner; %>
+            <h2 class="sub-header">
+              <a name="<%=city%>"></a>
+              <%=city%>
+            </h2>
+      
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
                   <tr>
-                  <td><%= guess.name %></td>
-                  <td><%= guess.city %></td>
-                  <td><%= guess.date.getMonth() + 1 + '/' + guess.date.getDate() + '/' + guess.date.getFullYear() %></td>
-                  <% var actual_or_none; %>
-                  <% actuals.forEach(function(actual) { %>
-                    <% if (actual.city === guess.city && actual.year === guess.year) { %>
-                      <% actual_or_none = actual.date %>
+                    <th>Person</th>
+                    <th>Guess</th>
+                    <th>Actual</th>
+                    <th>Diff (Days)</th>
+                    <th> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% guesses.forEach(function(guess) { %>
+                  <% if (guess.year == year && guess.city == city) { %>
+                    <tr>
+                    <td><%= guess.name %></td>
+                    <td><%= guess.date.getMonth() + 1 + '/' + guess.date.getDate() + '/' + guess.date.getFullYear() %></td>
+                    <% var actual_or_none, diff; %>
+                    <% actuals.forEach(function(actual) { %>
+                      <% if (actual.city === guess.city && actual.year === guess.year) { %>
+                        <% actual_or_none = actual.date %>
+                      <% } %>
+                    <% }) %>
+                    <% if (actual_or_none === undefined) actual_or_none = 'N/A' %>
+                    <% if (actual_or_none !== 'N/A') { %>
+                      <td><%= actual_or_none.getMonth() + 1 + '/' + actual_or_none.getDate() + '/' + actual_or_none.getFullYear()  %></td>
+                      <% diff = Math.round(Math.abs((actual_or_none - guess.date) / (1000 * 60 * 60 * 24))) %>
+                      <td><%= diff %></td>
+                    <% } else { %>
+                      <td>N/A</td>
+                      <td>N/A</td>
                     <% } %>
-                  <% }) %>
-                  <% if (actual_or_none === undefined) actual_or_none = 'N/A' %>
-                  <% if (actual_or_none !== 'N/A') { %>
-                    <td><%= actual_or_none.getMonth() + 1 + '/' + actual_or_none.getDate() + '/' + actual_or_none.getFullYear()  %></td>
-                    <td><%= Math.round(Math.abs((actual_or_none - guess.date) / (1000 * 60 * 60 * 24))) %></td>
-                  <% } else { %>
-                    <td>N/A</td>
-                    <td>N/A</td>
+                    <td>
+                      <form action='/delete_guess' method='post' class="form-inline" role="form">
+                        <input type="hidden" name="name" value="<%= guess.name %>">
+                        <input type="hidden" name="city" value="<%= guess.city %>">
+                        <input type="hidden" name="year" value="<%= guess.year %>">
+                        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
                   <% } %>
-                  <td>
-                    <form action='/delete_guess' method='post' class="form-inline" role="form">
-                      <input type="hidden" name="name" value="<%= guess.name %>">
-                      <input type="hidden" name="city" value="<%= guess.city %>">
-                      <input type="hidden" name="year" value="<%= guess.year %>">
-                      <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-                    </form>
-                  </td>
-                </tr>
-                <% } %>
-                <% }) %>
-              </tbody>
-            </table>
-          </div>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+            <% }) %>
           <% }) %>
 
         <h2 class="sub-header">Enter/Update Guess</h2>

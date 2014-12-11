@@ -29,15 +29,18 @@ db.once('open', function callback() {
     function(req, res) {
 
       api.get_years(db, function(e, years) {
-        api.get_users(db, function(e, users) {
-          api.get_all_guesses(db, function(e, guesses) {
-            api.get_actuals(db, function(e, actuals) {
-              res.render('index', {
-                'title': 'Snow Predictions',
-                'users': users,
-                'years': years,
-                'guesses': guesses,
-                'actuals': actuals
+        api.get_cities(db, function(e, cities) {
+          api.get_users(db, function(e, users) {
+            api.get_all_guesses(db, function(e, guesses) {
+              api.get_actuals(db, function(e, actuals) {
+                res.render('index', {
+                  'title'    : 'Snow Predictions',
+                  'users'    : users,
+                  'years'    : years,
+                  'cities'   : cities,
+                  'guesses'  : guesses,
+                  'actuals'  : actuals
+                })
               })
             })
           })
