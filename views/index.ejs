@@ -117,7 +117,7 @@
                   <% if (actual_or_none === undefined) actual_or_none = 'N/A' %>
                   <% if (actual_or_none !== 'N/A') { %>
                     <td><%= actual_or_none.getMonth() + 1 + '/' + actual_or_none.getDate() + '/' + actual_or_none.getFullYear()  %></td>
-                    <td><%= Math.floor(Math.abs((actual_or_none - guess.date) / (1000 * 60 * 60 * 24))) %></td>
+                    <td><%= Math.round(Math.abs((actual_or_none - guess.date) / (1000 * 60 * 60 * 24))) %></td>
                   <% } else { %>
                     <td>N/A</td>
                     <td>N/A</td>

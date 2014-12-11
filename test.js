@@ -29,11 +29,15 @@ db.once('open', function callback() {
   api.get_all_guesses(db, function(e, guesses) {
     console.log(guesses);
   })
-*/
   api.get_actuals(db, function(e, actuals) {
     actuals.forEach(function(x) {
       console.log('actual: %s', JSON.stringify(x));
     })
   })
+*/
+
+api.get_locations(db, function(e, locs) {
+  console.log(locs);
+})
 
 })
