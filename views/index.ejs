@@ -84,11 +84,11 @@
           </div>
 
           <% years.forEach(function(year) { %>
-            <h1 class="page-header"><%=year%></h1>
+            <a name="<%= year %>"></a>
+            <h1 class="page-header"><%= year %></h1>
             <% cities.forEach(function(city) { %>
             <% var winner; %>
             <h2 class="sub-header">
-              <a name="<%=city%>"></a>
               <%=city%>
             </h2>
       
