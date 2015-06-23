@@ -12,7 +12,7 @@ var async = require('async'),
     LocalStrategy = require('passport-local').Strategy;
   
 // app setup
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.use(bodyParser.json());
@@ -25,26 +25,23 @@ mongoose.connect('mongodb://goose_user:user_goose@dogen.mongohq.com:10009/app318
 var db = mongoose.connection;
 db.once('open', function callback() {
 
-  router.get('/',
-    function(req, res) {
-
-      api.get_years(db, function(e, years) {
-        api.get_cities(db, function(e, cities) {
-          api.get_users(db, function(e, users) {
-            api.get_all_guesses(db, function(e, guesses) {
-              api.get_actuals(db, function(e, actuals) {
-                res.render('index', {
-                  'title'    : 'Snow Predictions',
-                  'users'    : users,
-                  'years'    : years,
-                  'cities'   : cities,
-                  'guesses'  : guesses,
-                  'actuals'  : actuals
-                })
-              })
-            })
-          })
-        })
+  router.get('/', function(req, res) {
+      async.series([
+        function(cb) { api.get_years(db, cb) },
+        function(cb) { api.get_cities(db, cb) },
+        function(cb) { api.get_users(db, cb) },
+        function(cb) { api.get_all_guesses(db, cb) },
+        function(cb) { api.get_actuals(db, cb) },
+        function(cb) { api.get_winners(db, cb) },
+      ], function(e, results) {
+        res.render('index', {
+          'title': 'Snow Predictions',
+          'users': results[0],
+          'years': results[1],
+          'cities': results[2],
+          'guesses': results[3],
+          'actuals': results[4]
+      });
       })
     })
 
