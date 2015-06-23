@@ -42,7 +42,7 @@ db.once('open', function callback() {
           'guesses': results[3],
           'actuals': results[4],
           'winners': results[5]
-      });
+        })
       })
     })
 
@@ -62,6 +62,6 @@ db.once('open', function callback() {
 // ==== UTILS ==== //
 function _cb(e, d) {
   if (e) { console.log('Error: %s', e); }
-  else { console.log('Data: %s', JSON.stringify(d)); }
+  else { console.log('Data: %s', JSON.stringify(d, null, 4)); }
 }
 

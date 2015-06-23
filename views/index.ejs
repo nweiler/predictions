@@ -58,7 +58,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#Summary">Summary <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="#Win Count">Win Count <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
           <% years.forEach(function(year) { %>
@@ -68,15 +68,19 @@
         </div>
 
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Summary</h1>
+          <h1 class="page-header">Win Count</h1>
 
 
           <div class="row placeholders">
           <% users.forEach(function(user, idx) { %>
-            <%= user %>
+            <b><%= user %></b>
+            <% var count = 0; %>
+            <% for (var i=0; i<winners.length; i++) { %>
+              <% if (winners[i] && winners[i].name == user) count++ %>
+            <% } %>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                60%
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: <%= count %>0%;">
+                <%= count %>
               </div>
             </div>
 
