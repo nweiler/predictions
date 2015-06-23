@@ -36,11 +36,12 @@ db.once('open', function callback() {
       ], function(e, results) {
         res.render('index', {
           'title': 'Snow Predictions',
-          'users': results[0],
-          'years': results[1],
-          'cities': results[2],
+          'years': results[0],
+          'cities': results[1],
+          'users': results[2],
           'guesses': results[3],
-          'actuals': results[4]
+          'actuals': results[4],
+          'winners': results[5]
       });
       })
     })
