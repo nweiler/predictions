@@ -26,24 +26,12 @@ var db = mongoose.connection;
 db.once('open', function callback() {
 
   router.get('/', function(req, res) {
-      async.series([
-        function(cb) { api.get_years(db, cb) },
-        function(cb) { api.get_cities(db, cb) },
-        function(cb) { api.get_users(db, cb) },
-        function(cb) { api.get_all_guesses(db, cb) },
-        function(cb) { api.get_actuals(db, cb) },
-        function(cb) { api.get_winners(db, cb) },
-      ], function(e, results) {
-        res.render('index', {
-          'title': 'Snow Predictions',
-          'users': results[0],
-          'years': results[1],
-          'cities': results[2],
-          'guesses': results[3],
-          'actuals': results[4]
-      });
-      })
-    })
+    console.log('guesses API v0.0.1');
+  })
+
+  router.get('/user', function(res, res) {
+    api.get_users(req, res, db, _cb);
+  })
 
   router.post('/upsert_guess', function(req, res) {
     api.upsert_guess(req, res, db, _cb)
